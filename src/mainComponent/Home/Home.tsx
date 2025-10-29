@@ -5,6 +5,8 @@ import FeaturesSection from "./FeaturesSection";
 import HowItWorksSection from "./HowItWorksSection";
 import PricingSection from "./PricingSection";
 import ContactSection from "./ContactSection";
+import DashboardPreview from "./DashboardPreview";
+import MobileUI from "./MobileUI";
 
 const Home = () => {
   return (
@@ -27,6 +29,8 @@ radial-gradient(ellipse 110% 50% at 80% 30%, rgba(255, 215, 0, 0.08), transparen
         <FeaturesSection />
         <HowItWorksSection />
         <PricingSection />
+        <DashboardPreview />
+        <MobileUI />
         <ContactSection />
         <Footer />
       </div>

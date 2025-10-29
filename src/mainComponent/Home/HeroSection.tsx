@@ -11,24 +11,26 @@ const HeroSection = () => {
             <div className='absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full blur opacity-30'></div>
             <span className='relative px-6 py-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white text-sm font-medium flex items-center gap-2'>
               <Sparkles size={16} className='text-cyan-400' />
-              Revolutionize Dealership Communication
+              Safety + Simplicity
             </span>
           </div>
 
           {/* Enhanced Heading */}
           <div className='space-y-4'>
             <h1 className='text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight'>
-              <span className='block text-white'>Scan-to-Call Tags for</span>
+              <span className='block text-white'> When Every Second</span>
               <span className='block bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent'>
-                Modern Dealerships
+                Counts, Just Scan
               </span>
             </h1>
           </div>
 
           {/* Enhanced Subheading */}
           <p className='text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed'>
-            Connect customers instantly with a simple QR scan. Powered by Twilio
-            calls and Razorpay payments. Recharge tokens on demand.
+            From road emergencies to customer support, ScanFleet QR stickers
+            make it easy to reach the right person instantly. Share live GPS via
+            WhatsApp, call the dealership, or alert nearby police/towing-truck —
+            all with one scan.
           </p>
 
           {/* Enhanced CTA Buttons */}
