@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import HeroSection from "./HeroSection";
-import FeaturesSection from "./FeaturesSection";
+
 import HowItWorksSection from "./HowItWorksSection";
 import PricingSection from "./PricingSection";
 import ContactSection from "./ContactSection";
@@ -26,7 +26,7 @@ radial-gradient(ellipse 110% 50% at 80% 30%, rgba(255, 215, 0, 0.08), transparen
         />
         <Navigation />
         <HeroSection />
-        <FeaturesSection />
+
         <HowItWorksSection />
         <PricingSection />
         <DashboardPreview />

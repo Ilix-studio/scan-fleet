@@ -128,20 +128,7 @@ const PricingSection = () => {
                     Generate stickers with vehicle info & dealer contacts
                   </span>
                 </li>
-                <li className='flex items-start gap-3'>
-                  <Check
-                    size={20}
-                    className='text-cyan-400 flex-shrink-0 mt-0.5'
-                  />
-                  <span>Direct customer calls for sales inquiries</span>
-                </li>
-                <li className='flex items-start gap-3'>
-                  <Check
-                    size={20}
-                    className='text-cyan-400 flex-shrink-0 mt-0.5'
-                  />
-                  <span>Service center connectivity</span>
-                </li>
+
                 <li className='flex items-start gap-3'>
                   <Check
                     size={20}
@@ -161,13 +148,6 @@ const PricingSection = () => {
                     size={20}
                     className='text-purple-400 flex-shrink-0 mt-0.5'
                   />
-                  <span>Emergency calling: Police (100), Ambulance (108)</span>
-                </li>
-                <li className='flex items-start gap-3'>
-                  <Check
-                    size={20}
-                    className='text-purple-400 flex-shrink-0 mt-0.5'
-                  />
                   <span>GPS location sharing via WhatsApp Business</span>
                 </li>
                 <li className='flex items-start gap-3'>
@@ -176,13 +156,6 @@ const PricingSection = () => {
                     className='text-purple-400 flex-shrink-0 mt-0.5'
                   />
                   <span>Family safety notifications</span>
-                </li>
-                <li className='flex items-start gap-3'>
-                  <Check
-                    size={20}
-                    className='text-purple-400 flex-shrink-0 mt-0.5'
-                  />
-                  <span>Vehicle identity & owner details</span>
                 </li>
               </ul>
             </div>

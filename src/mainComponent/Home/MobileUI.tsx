@@ -124,15 +124,17 @@ const MobileUI = () => {
   return (
     <>
       <section className='bg-white/1 backdrop-blur-xl border-t border-white/1 py-12'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-white'>
-            Scan-to-Connect Experience
-          </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            See how ScanFleet's QR technology works in real-time. From vehicle
-            identification to emergency response, experience the seamless
-            connection between physical stickers and digital services.
-          </p>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='text-center mb-16'>
+            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-white'>
+              Scan-to-Connect Experience
+            </h2>
+            <p className='text-white/70 text-lg max-w-2xl mx-auto'>
+              See how ScanFleet's QR technology works in real-time. From vehicle
+              identification to emergency response, experience the seamless
+              connection between physical stickers and digital services.
+            </p>
+          </div>
         </div>
 
         <div className='w-80 mx-auto bg-white/5 text-white backdrop-blur-xl border-t border-white/10'>

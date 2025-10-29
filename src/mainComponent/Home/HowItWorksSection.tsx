@@ -35,7 +35,10 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id='how-it-works' className='py-20 sm:py-32'>
+    <section
+      id='how-it-works'
+      className='bg-white/1 backdrop-blur-xl border-t border-white/10 py-22'
+    >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <div className='text-center mb-16'>
@@ -48,7 +51,7 @@ const HowItWorksSection = () => {
         </div>
 
         {/* Steps Grid */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
