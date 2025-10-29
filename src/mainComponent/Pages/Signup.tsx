@@ -70,7 +70,7 @@ const Signup = () => {
         }}
       />
 
-      <div className='relative z-10 w-full max-w-md px-6'>
+      <div className='relative z-10 w-full max-w-6xl px-1'>
         {/* Signup Card */}
         <div className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl'>
           {/* Glow Effect */}

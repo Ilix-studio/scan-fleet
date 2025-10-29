@@ -157,6 +157,13 @@ const PricingSection = () => {
                   />
                   <span>Family safety notifications</span>
                 </li>
+                <li className='flex items-start gap-3'>
+                  <Check
+                    size={20}
+                    className='text-purple-400 flex-shrink-0 mt-0.5'
+                  />
+                  <span>Road-Side Assistance</span>
+                </li>
               </ul>
             </div>
           </div>

@@ -26,7 +26,6 @@ radial-gradient(ellipse 110% 50% at 80% 30%, rgba(255, 215, 0, 0.08), transparen
         />
         <Navigation />
         <HeroSection />
-
         <HowItWorksSection />
         <PricingSection />
         <DashboardPreview />

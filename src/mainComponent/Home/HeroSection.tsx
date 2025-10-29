@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play, Sparkles, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -27,23 +28,29 @@ const HeroSection = () => {
 
           {/* Enhanced Subheading */}
           <p className='text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed'>
-            From road emergencies to customer support, ScanFleet QR stickers
+            {/* From road emergencies to customer support, ScanFleet QR stickers
             make it easy to reach the right person instantly. Share live GPS via
             WhatsApp, call the dealership, or alert nearby police/towing-truck —
-            all with one scan.
+            all with one scan. */}
+            Emergency-response connectivity platform : At Scan-Fleet, we connect
+            vehicles, people, and emergency responders through smart
+            scan-to-call technology — ensuring that help is never more than a
+            scan away.
           </p>
 
           {/* Enhanced CTA Buttons */}
           <div className='flex flex-col sm:flex-row gap-4 justify-center pt-8'>
-            <Button className='relative group bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white border-0 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200'>
-              <span className='flex items-center gap-2'>
-                Get Started
-                <ArrowRight
-                  size={20}
-                  className='group-hover:translate-x-1 transition-transform duration-200'
-                />
-              </span>
-            </Button>
+            <Link to='/login'>
+              <Button className='relative group bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white border-0 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200'>
+                <span className='flex items-center gap-2'>
+                  Log-In
+                  <ArrowRight
+                    size={20}
+                    className='group-hover:translate-x-1 transition-transform duration-200'
+                  />
+                </span>
+              </Button>
+            </Link>
             <Button
               variant='outline'
               className='border-white/20 text-white hover:bg-white/10 bg-transparent px-8 py-4 text-lg font-semibold rounded-xl backdrop-blur-xl'
