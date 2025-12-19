@@ -66,10 +66,10 @@ const PricingSection = () => {
               {/* Price */}
               <div className='mb-8'>
                 <span className='text-6xl sm:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent'>
-                  ₹299
+                  ₹499
                 </span>
                 <p className='text-white/70 text-xl mt-2'>per token</p>
-                <p className='text-white/50 text-sm'>(₹299 + 18% GST)</p>
+                <p className='text-white/50 text-sm'>(₹499 + 18% GST)</p>
               </div>
 
               {/* Key Benefit */}

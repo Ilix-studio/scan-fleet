@@ -32,10 +32,13 @@ const HeroSection = () => {
             make it easy to reach the right person instantly. Share live GPS via
             WhatsApp, call the dealership, or alert nearby police/towing-truck —
             all with one scan. */}
-            Emergency-response connectivity platform : At Scan-Fleet, we connect
+            {/* Emergency-response connectivity platform : At Scan-Fleet, we connect
             vehicles, people, and emergency responders through smart
             scan-to-call technology — ensuring that help is never more than a
-            scan away.
+            scan away.  */}
+            Emergencies don’t wait. Neither should help. Scan-Fleet enables
+            instant scan-to-call access to vehicle owners or responders—cutting
+            chaos, confusion, and response time when it matters most.
           </p>
 
           {/* Enhanced CTA Buttons */}
@@ -61,26 +64,105 @@ const HeroSection = () => {
           </div>
 
           {/* Enhanced Hero Demo */}
+          {/* Smart QR Code Card */}
           <div className='mt-20 relative'>
-            <div className='relative bg-white/1 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 max-w-5xl mx-auto'>
+            <div className='relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 max-w-5xl mx-auto overflow-hidden'>
               {/* Glow Effect */}
               <div className='absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-50'></div>
 
-              <div className='relative aspect-video bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl flex items-center justify-center'>
-                <div className='text-center space-y-4'>
-                  <div className='relative'>
-                    <div className='w-24 h-24 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full flex items-center justify-center mx-auto shadow-lg'>
-                      <Play size={48} className='text-white fill-white ml-1' />
+              <div className='relative grid md:grid-cols-2 gap-8 items-center'>
+                {/* QR Sticker Visual */}
+                <div className='relative'>
+                  <div className='aspect-square max-w-xs mx-auto bg-black rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-transform duration-300'>
+                    {/* QR Code Pattern */}
+                    <div className='w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-4 relative'>
+                      {/* Scanfleet Branding */}
+                      <div className='absolute top-3 left-3 right-3 flex items-center justify-between'>
+                        <span className='text-cyan-400 text-xs font-bold tracking-wider'>
+                          SCANFLEET
+                        </span>
+                        <div className='w-2 h-2 bg-green-400 rounded-full animate-pulse'></div>
+                      </div>
+
+                      {/* QR Code Placeholder */}
+                      <div className='mt-6 aspect-square bg-white rounded-lg p-2'>
+                        <div className='w-full h-full grid grid-cols-7 gap-0.5'>
+                          {Array.from({ length: 49 }).map((_, i) => (
+                            <div
+                              key={i}
+                              className={`aspect-square rounded-sm ${
+                                [
+                                  0, 1, 2, 6, 7, 8, 14, 21, 28, 35, 36, 37, 38,
+                                  42, 43, 44, 48, 12, 13, 20, 27, 34, 40, 41,
+                                  46, 47, 4, 10, 11, 17, 18, 24, 25, 31, 32,
+                                ].includes(i)
+                                  ? "bg-slate-900"
+                                  : "bg-white"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Vehicle Info */}
+                      <div className='mt-3 text-center'>
+                        <p className='text-white/60 text-[10px] uppercase tracking-wider'>
+                          Scan for Emergency
+                        </p>
+                        <p className='text-cyan-400 text-xs font-mono mt-1'>
+                          AS-01-XX-0000
+                        </p>
+                      </div>
                     </div>
-                    <div className='absolute -inset-2 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full blur opacity-30'></div>
                   </div>
+
+                  {/* Scan Animation Ring */}
+                  <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
+                    <div className='w-64 h-64 border-2 border-cyan-400/30 rounded-full animate-ping'></div>
+                  </div>
+                </div>
+
+                {/* Info Section */}
+                <div className='space-y-6 text-center md:text-left'>
                   <div>
-                    <p className='text-white font-semibold text-lg mb-2'>
-                      Interactive QR Tag Demo
+                    <span className='inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-medium mb-4'>
+                      Smart QR Technology
+                    </span>
+                    <h3 className='text-2xl sm:text-3xl font-bold text-white mb-3'>
+                      One Scan. Instant Connection.
+                    </h3>
+                    <p className='text-white/60 text-sm sm:text-base'>
+                      Premium QR stickers that connect vehicles to emergency
+                      services, dealerships, and family members in under 3
+                      minutes.
                     </p>
-                    <p className='text-white/60 text-sm'>
-                      See how customers connect instantly
-                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className='space-y-3'>
+                    {[
+                      { icon: "🚨", text: "Emergency contact in < 3 min" },
+                      { icon: "🔒", text: "Masked calling for privacy" },
+                      { icon: "📍", text: "Real-time location sharing" },
+                      { icon: "🏪", text: "Direct dealership connection" },
+                    ].map((feature, idx) => (
+                      <div
+                        key={idx}
+                        className='flex items-center gap-3 justify-center md:justify-start'
+                      >
+                        <span className='text-lg'>{feature.icon}</span>
+                        <span className='text-white/80 text-sm'>
+                          {feature.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className='pt-4'>
+                    <button className='px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/25'>
+                      Get Your QR Sticker
+                    </button>
                   </div>
                 </div>
               </div>

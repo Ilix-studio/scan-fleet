@@ -22,7 +22,7 @@ const DecisionPage = () => {
   const options = [
     {
       id: "B2B",
-      title: "B2B",
+      title: "Authorized Dealer",
       subtitle: "Unlimited Tokens",
       description: "API Integration",
       features: ["Dashboard", "Analytics", "Bulk Generation"],
@@ -32,7 +32,7 @@ const DecisionPage = () => {
     },
     {
       id: "B2C",
-      title: "B2C",
+      title: "Direct User",
       subtitle: "15 tokens",
       description: "Personal Use",
       features: ["Easy Setup", "Family Safety", "Emergency Features"],
@@ -40,6 +40,16 @@ const DecisionPage = () => {
       gradient: "from-purple-500 to-pink-600",
       bgGlow: "bg-purple-500/20",
     },
+    // {
+    //   id: "B2C",
+    //   title: "Rental Service",
+    //   subtitle: "15 tokens",
+    //   description: "Personal Use",
+    //   features: ["Easy Setup", "Family Safety", "Emergency Features"],
+    //   icon: User,
+    //   gradient: "from-purple-500 to-pink-600",
+    //   bgGlow: "bg-purple-500/20",
+    // },
   ];
 
   return (
