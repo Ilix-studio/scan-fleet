@@ -7,7 +7,7 @@ import {
   User,
   Building,
   Phone,
-  Sparkles,
+  ScanQrCode,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -82,7 +82,7 @@ const Signup = () => {
               <div className='flex items-center justify-center gap-3 mb-4'>
                 <div className='relative'>
                   <div className='w-12 h-12 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg'>
-                    <Sparkles size={24} />
+                    <ScanQrCode size={24} />
                   </div>
                   <div className='absolute -inset-1 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-xl blur opacity-30'></div>
                 </div>

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, Sparkles, ArrowRight } from "lucide-react";
+import { Play, ArrowRight, ScanQrCode } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
@@ -11,7 +11,7 @@ const HeroSection = () => {
           <div className='inline-block relative'>
             <div className='absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full blur opacity-30'></div>
             <span className='relative px-6 py-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white text-sm font-medium flex items-center gap-2'>
-              <Sparkles size={16} className='text-cyan-400' />
+              <ScanQrCode size={16} className='text-cyan-400' />
               Safety + Simplicity
             </span>
           </div>

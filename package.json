@@ -14,9 +14,11 @@
     "@tailwindcss/vite": "^4.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "konva": "^10.0.12",
     "lucide-react": "^0.488.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-konva": "^19.2.1",
     "react-router-dom": "^7.9.4",
     "tailwind-merge": "^3.2.0",
     "tw-animate-css": "^1.2.5"

@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Twitter, Sparkles } from "lucide-react";
+import { Mail, Linkedin, Twitter, ScanQrCode } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -10,8 +10,8 @@ const Footer = () => {
           <div>
             <div className='flex items-center gap-3 font-bold text-lg mb-4'>
               <div className='relative'>
-                <div className='w-10 h-10 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg'>
-                  <Sparkles size={20} />
+                <div className='w-10 h-10 bg-gradient-to-br from-red-500 via-black to-white rounded-xl flex items-center justify-center text-white font-bold shadow-lg'>
+                  <ScanQrCode size={20} />
                 </div>
                 <div className='absolute -inset-1 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-xl blur opacity-30'></div>
               </div>
