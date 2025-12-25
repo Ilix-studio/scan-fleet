@@ -160,9 +160,17 @@ const HeroSection = () => {
 
                   {/* CTA */}
                   <div className='pt-4'>
-                    <button className='px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/25'>
-                      Get Your QR Sticker
-                    </button>
+                    <Link to='/sticker-editor'>
+                      <button className='px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/25'>
+                        <span className='flex items-center gap-2'>
+                          Get Your QR Sticker
+                          <ArrowRight
+                            size={20}
+                            className='group-hover:translate-x-1 transition-transform duration-200'
+                          />
+                        </span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

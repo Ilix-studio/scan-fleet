@@ -5,6 +5,7 @@ import Signup from "./mainComponent/Pages/Signup";
 import Login from "./mainComponent/Pages/Login";
 import DecisionPage from "./mainComponent/Pages/DecisionPage";
 import StickerEditor from "./mainComponent/Features/StickerEditor";
+import TokenDisplay from "./mainComponent/Pages/TokenDisplay";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/decision-page' element={<DecisionPage />} />
         <Route path='/sticker-editor' element={<StickerEditor />} />
+        <Route path='/token-display' element={<TokenDisplay />} />
       </Routes>
     </>
   );
