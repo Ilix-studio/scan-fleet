@@ -3,34 +3,22 @@ import { QrCode, Phone, MessageCircle } from "lucide-react";
 const HowItWorksSection = () => {
   const steps = [
     {
-      number: 1,
       icon: QrCode,
       title: "Generate Smart Stickers",
       description:
         "Dealers create QR stickers with vehicle info, emergency contacts, and owner details through the ScanFleet dashboard.",
-      details: "B2B token-based generation",
-      gradient: "from-cyan-500 to-blue-600",
-      bgGlow: "bg-cyan-500/20",
     },
     {
-      number: 2,
       icon: Phone,
       title: "Multi-Purpose Scanning",
       description:
-        "Users scan QR code and choose: Call dealer, Emergency services like Private Ambulance/Notifiy Police, Share GPS location or Call Nearby Towing Car",
-      details: "Twilio-powered instant calls",
-      gradient: "from-purple-500 to-pink-600",
-      bgGlow: "bg-purple-500/20",
+        "Users scan QR code and choose: Call dealer, Emergency services like Private Ambulance, Share GPS location or Call Nearby Towing Car",
     },
     {
-      number: 3,
       icon: MessageCircle,
       title: "WhatsApp GPS Sharing",
       description:
         "Emergency mode auto-sends live location to family members via WhatsApp Business API for real-time safety.",
-      details: "Family safety notifications",
-      gradient: "from-green-500 to-emerald-600",
-      bgGlow: "bg-green-500/20",
     },
   ];
 
@@ -57,22 +45,14 @@ const HowItWorksSection = () => {
             return (
               <div key={index} className='relative group'>
                 {/* Glow Effect */}
-                <div
-                  className={`absolute -inset-1 ${step.bgGlow} rounded-xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300`}
-                ></div>
 
                 {/* Main Card */}
                 <div className='relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all duration-300 hover:transform hover:-translate-y-2'>
                   {/* Step Number Badge */}
-                  <div
-                    className={`absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br ${step.gradient} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg`}
-                  >
-                    {step.number}
-                  </div>
 
                   {/* Icon Container */}
                   <div
-                    className={`w-16 h-16 bg-gradient-to-br ${step.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 bg-gradient-to-br  rounded-2xl flex items-center justify-center mb-4 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon size={32} className='text-white' />
                   </div>
@@ -84,11 +64,6 @@ const HowItWorksSection = () => {
                   <p className='text-white/80 mb-3 text-sm leading-relaxed'>
                     {step.description}
                   </p>
-                  <div
-                    className={`inline-block px-3 py-1 bg-gradient-to-r ${step.gradient} rounded-full text-white text-xs font-medium`}
-                  >
-                    {step.details}
-                  </div>
                 </div>
               </div>
             );

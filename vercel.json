@@ -1,0 +1,23 @@
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "env": {
+    "VERCEL_TOOLBAR": "0"
+  },
+  "build": {
+    "command": "npm run build"
+  },
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    }
+  ],
+  "redirects": [],
+  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
+}
