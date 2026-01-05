@@ -126,3 +126,19 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+/* Hide default cursor only on Home page */
+.cursor-none {
+  cursor: none;
+}
+
+.cursor-none * {
+  cursor: none !important;
+}
+
+/* Restore cursor on interactive elements if needed */
+.cursor-none button,
+.cursor-none a,
+.cursor-none input,
+.cursor-none textarea {
+  cursor: pointer !important;
+}

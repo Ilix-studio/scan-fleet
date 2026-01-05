@@ -2,6 +2,7 @@ import { Mail, Linkedin, Twitter, ScanQrCode } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className='bg-white/5 backdrop-blur-xl border-t border-white/10 py-12'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -95,7 +96,9 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className='border-t border-white/10 pt-8 text-center text-sm text-white/60'>
-          <p>&copy; 2025 ScanFleet Technologies. All rights reserved.</p>
+          <p>
+            &copy; {currentYear} ScanFleet Technologies. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
