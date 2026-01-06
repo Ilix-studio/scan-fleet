@@ -76,8 +76,8 @@ const baseQueryWithReauth = async (
 };
 
 export const baseApi = createApi({
-  reducerPath: "api",
+  reducerPath: "scanfleet-api",
   baseQuery: baseQueryWithReauth,
-  tagTypes: ["User", "Token", "Sticker", "Purchase", "Analytics"],
+  tagTypes: ["User", "Token", "Sticker", "Purchase", "Analytics", "ApiAccount"],
   endpoints: () => ({}),
 });
