@@ -22,7 +22,8 @@ import {
   generateId,
   serializeElements,
 } from "./StickerEditor.utils";
-import { saveSticker } from "@/redux-store/services/stickerApi";
+// This is the key change - import the mutation hook instead of a function
+import { useSaveStickerMutation } from "@/redux-store/services/stickerApi";
 import { ToolPanel } from "./SE_Components/ToolPanel";
 import { ReferenceCodePanel } from "./SE_Components/ReferenceCodePanel";
 import { PropertiesPanel } from "./SE_Components/PropertiesPanel";
@@ -48,9 +49,13 @@ const StickerEditor = () => {
   const [fontSize, setFontSize] = useState(24);
   const [fontFamily, setFontFamily] = useState(FONT_FAMILIES[0].value);
 
-  // Save state
+  // Save state - we can now remove isSaving since RTK Query manages this
   const [referenceCode, setReferenceCode] = useState<string | null>(null);
-  const [isSaving, setIsSaving] = useState(false);
+
+  // RTK Query mutation hook - this replaces the direct saveSticker function call
+  // The hook returns an array: [trigger function, result object with status]
+  const [saveSticker, { isLoading: isSaving, isError, error }] =
+    useSaveStickerMutation();
 
   // Refs
   const canvasRef = useRef<EditorCanvasHandle>(null);
@@ -273,26 +278,40 @@ const StickerEditor = () => {
     [updateElement]
   );
 
-  // Save handler
+  // Save handler - this is where the major changes are
   const handleSave = useCallback(async () => {
     if (!canvasRef.current) return;
 
-    setIsSaving(true);
+    // Deselect any selected element so it doesn't show the transformer in the export
     setSelectedId(null);
 
     try {
+      // Wait a brief moment for the UI to update and remove selection visuals
       await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Get the canvas as a data URL (base64 PNG)
       const dataUrl = canvasRef.current.getDataUrl();
       if (!dataUrl) throw new Error("Failed to get canvas data");
 
-      const result = await saveSticker(dataUrl, elements);
+      // Call the RTK Query mutation with unwrap() to get the raw response
+      // unwrap() converts the mutation promise to throw on error, making it work with try-catch
+      const result = await saveSticker({
+        elements,
+        imageData: dataUrl,
+        language: selectedLanguage.code,
+        template: undefined,
+      }).unwrap();
+
+      // The mutation succeeded, store the reference code
       setReferenceCode(result.referenceCode);
+
+      // You could also show a success notification here
+      console.log("Sticker saved successfully:", result.referenceCode);
+      console.log("Expires at:", result.expiresAt);
     } catch (error) {
       console.error("Save error:", error);
-    } finally {
-      setIsSaving(false);
     }
-  }, [elements]);
+  }, [elements, saveSticker, selectedLanguage]);
 
   // Purchase handler
   const handlePurchase = useCallback(async () => {
@@ -309,6 +328,8 @@ const StickerEditor = () => {
 
     console.log("Sticker data for purchase:", data);
     // Navigate to purchase flow with data
+    // You could use react-router here to navigate to the purchase page
+    // and pass the reference code as a URL parameter or state
   }, [elements, referenceCode]);
 
   return (
@@ -410,7 +431,7 @@ const StickerEditor = () => {
               onDownload={handleDownload}
             />
 
-            {/* Reference Code */}
+            {/* Reference Code Panel - now shows error state if save failed */}
             <div className='mt-4 w-full max-w-md'>
               <ReferenceCodePanel
                 referenceCode={referenceCode}
@@ -418,6 +439,13 @@ const StickerEditor = () => {
                 canSave={elements.length > 0}
                 onSave={handleSave}
               />
+
+              {/* Show error message if save failed */}
+              {isError && (
+                <div className='mt-2 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm'>
+                  Failed to save sticker. Please try again.
+                </div>
+              )}
             </div>
           </div>
 

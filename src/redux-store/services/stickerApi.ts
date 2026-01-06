@@ -1,80 +1,118 @@
-// services/stickerApi.ts
+// redux-store/services/stickerApi.ts
+import { baseApi } from "./baseApi";
+import type { EditorElement } from "../slices/editorSlice";
 
-import { EditorElement } from "@/mainComponent/Features/StickerEditor.types";
-import {
-  generateReferenceCode,
-  serializeElements,
-} from "@/mainComponent/Features/StickerEditor.utils";
-
-interface SaveStickerResponse {
-  success: boolean;
-  referenceCode: string;
-  expiresAt: string;
+interface SaveStickerRequest {
+  elements: EditorElement[];
+  imageData: string;
+  language: string;
+  template?: string;
 }
 
-interface GetStickerResponse {
-  success: boolean;
+interface SaveStickerResponse {
   referenceCode: string;
-  imageData: string;
+  expiresAt: string;
+  stickerDesignId: string;
+}
+
+interface RetrieveStickerResponse {
+  referenceCode: string;
   elements: EditorElement[];
-  status: "UNUSED" | "USED";
+  imageData: string;
+  language: string;
+  template?: string;
+  status: "active" | "expired" | "used";
   createdAt: string;
   expiresAt: string;
 }
 
-export const saveSticker = async (
-  imageData: string,
-  elements: EditorElement[]
-): Promise<SaveStickerResponse> => {
-  try {
-    const response = await fetch("/api/stickers/save", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        imageData,
-        elements: serializeElements(elements),
+interface UseStickerRequest {
+  referenceCode: string;
+  tokenId: string;
+}
+
+interface UseStickerResponse {
+  success: boolean;
+  stickerId: string;
+  qrCode: string;
+  trackingNumber?: string;
+}
+
+export const stickerApi = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    // Save design and get reference code
+    saveSticker: builder.mutation<SaveStickerResponse, SaveStickerRequest>({
+      query: (design) => ({
+        url: "/stickers/save",
+        method: "POST",
+        body: design,
       }),
-    });
+      invalidatesTags: ["Sticker"],
+    }),
 
-    if (!response.ok) {
-      throw new Error("Save failed");
-    }
+    // Retrieve design by reference code
+    retrieveSticker: builder.query<RetrieveStickerResponse, string>({
+      query: (referenceCode) => `/stickers/${referenceCode}`,
+      providesTags: (_result, _error, referenceCode) => [
+        { type: "Sticker", id: referenceCode },
+      ],
+    }),
 
-    return response.json();
-  } catch (error) {
-    // Fallback for demo/development
-    console.warn("API unavailable, generating local reference code");
-    return {
-      success: true,
-      referenceCode: generateReferenceCode(),
-      expiresAt: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
-    };
-  }
-};
+    // Convert reference code to active sticker using token
+    useSticker: builder.mutation<UseStickerResponse, UseStickerRequest>({
+      query: (data) => ({
+        url: "/stickers/use",
+        method: "POST",
+        body: data,
+      }),
+      // Optimistically update token count
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+          // Invalidate user data to refetch updated token balance
+          dispatch(baseApi.util.invalidateTags(["User", "Token"]));
+        } catch (err) {
+          // Rollback happens automatically with RTK Query
+        }
+      },
+      invalidatesTags: ["Sticker", "Token", "User"],
+    }),
 
-export const getSticker = async (code: string): Promise<GetStickerResponse> => {
-  const response = await fetch(`/api/stickers/${code}`);
+    // Get user's active stickers
+    getUserStickers: builder.query<RetrieveStickerResponse[], void>({
+      query: () => "/stickers/my-stickers",
+      providesTags: (_result) =>
+        _result
+          ? [
+              ..._result.map(({ referenceCode }) => ({
+                type: "Sticker" as const,
+                id: referenceCode,
+              })),
+              { type: "Sticker", id: "LIST" },
+            ]
+          : [{ type: "Sticker", id: "LIST" }],
+    }),
 
-  if (!response.ok) {
-    throw new Error("Sticker not found or expired");
-  }
+    // Delete unused sticker design
+    deleteSticker: builder.mutation<void, string>({
+      query: (referenceCode) => ({
+        url: `/stickers/${referenceCode}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (_result, _error, referenceCode) => [
+        { type: "Sticker", id: referenceCode },
+        { type: "Sticker", id: "LIST" },
+      ],
+    }),
+  }),
+});
 
-  return response.json();
-};
-
-export const useSticker = async (
-  referenceCode: string,
-  tokenId: string
-): Promise<{ success: boolean }> => {
-  const response = await fetch("/api/stickers/use", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ referenceCode, tokenId }),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to mark sticker as used");
-  }
-
-  return response.json();
-};
+// Export the auto-generated hooks for use in components
+export const {
+  useSaveStickerMutation,
+  useRetrieveStickerQuery,
+  useLazyRetrieveStickerQuery,
+  useUseStickerMutation,
+  useGetUserStickersQuery,
+  useDeleteStickerMutation,
+} = stickerApi;
